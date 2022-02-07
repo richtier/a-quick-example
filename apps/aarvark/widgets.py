@@ -8,7 +8,7 @@ from config import settings
 class PrettyJSONWidget(widgets.Textarea):
 
     def render(self, name, value, **kwargs):
-        html = super(PrettyJSONWidget, self).render(name, value)
+        html = super().render(name, value)
 
         return ('<div class="jsonwidget" data-initial="parsed">' + html + '<div ''class="parsed"></div></div>')
 
@@ -17,7 +17,7 @@ class PrettyJSONWidget(widgets.Textarea):
         extra = '' if settings.DEBUG else '.min'
         return widgets.Media(
             js=(
-                'admin/js/vendor/jquery/jquery%s.js' % extra,
+                'admin/js/vendor/jquery/jquery{extra}.js',
                 'admin/js/jquery.init.js',
                 'prettyjson/prettyjson.js',
             ),

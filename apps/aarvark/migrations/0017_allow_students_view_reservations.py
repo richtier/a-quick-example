@@ -13,15 +13,11 @@ def add(apps, editor):
     create_contenttypes(app_config)
     create_permissions(app_config)
 
-    Group.objects.get(name='student').permissions.add(
-        Permission.objects.get_by_natural_key('view_reservation', 'thesis', 'reservation')
-    )
+    Group.objects.get(name='student').permissions.all().clear()
 
 
 def remove(apps, editor):
-    Group.objects.get(name='student').permissions.remove(
-        Permission.objects.get_by_natural_key('view_reservation', 'thesis', 'reservation')
-    )
+    pass
 
 
 class Migration(migrations.Migration):

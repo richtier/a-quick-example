@@ -20,6 +20,4 @@ class Migration(migrations.Migration):
         ('challenge', '0013_auto_20210130_0114'),
     ]
 
-    operations = [
-        migrations.RunPython(migrate_unlocks),
-    ]
+    operations = [migrations.RunPython(migrate_unlocks)]
