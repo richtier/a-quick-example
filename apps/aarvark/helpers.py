@@ -1,24 +1,51 @@
-# C4018 (checking-settings-debug)
+from unittest import TestCase
+from dataclasses import dataclass
 
-from django.conf import settings
+
+try:
+    print()
+except (ValueError, TypeError) as err:
+    pass
 
 
-def format_internal_error(error):
-    message = str(error)
-    code = type(error).__name__
-    if settings.DEBUG:
-        params = {
-            'exception': type(error).__name__,
-            'message': str(error),
-            'trace': traceback.format_list(traceback.extract_tb(
-                error.__traceback__)),
-        }
-        return {
-            'code': code,
-            'message': message,
-            'params': params,
-        }
-    return {
-        'code': code,
-        'message': message,
-    }
+try:
+    print()
+except ValueError or TypeError:
+    pass
+
+
+async def qux():
+    pass
+
+async def quux():
+    qux()
+
+
+value = 'a'
+
+
+isinstance(value, str) or isinstance(value, int)
+
+
+class Bar:
+    @classmethod
+    def cm():
+        pass
+
+
+value is 1
+
+value != True
+
+
+@dataclass
+class Bar:
+    pass
+
+
+class Bar(TestCase):
+    def foo(self):
+        self.assertEquals("a", "b")
+
+    def bar(self):
+        self.assertTrue("a", "b")
