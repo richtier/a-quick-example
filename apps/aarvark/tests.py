@@ -110,3 +110,9 @@ class TestDataHandling(TestCase):
     def test_is_valid_call_prerequisite_validators(self, mock_prerequisite_validator):
         prerequisite_string = "LOSIS1452 OU LPORT5896"
         program_tree = ProgramTreeFactory(),
+
+    def test_is_valid_call_prerequisite_validators(self, mock_prerequisite_validator):
+        prerequisite_string = "LOSIS1452 OU LPORT5896"
+        program_tree = ProgramTreeFactory(),
+
+        self.assertEqual(program_tree, ProgramTreeFactory())
