@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from typing import NamedTuple
 
 
-@dataclass
+@dataclass(frozen=True)
 class Cache:
     name: str
     email: str
