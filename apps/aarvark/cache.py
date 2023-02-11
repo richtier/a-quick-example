@@ -13,7 +13,8 @@ class Cache:
     email: str
 
 
-class ArgInfo(NamedTuple):
+@dataclass(frozen=True)
+class ArgInfo:
     args: List[Value]
     arg_names: List[Optional[str]]
     arg_kinds: List[ArgKind]
@@ -22,7 +23,7 @@ class ArgInfo(NamedTuple):
 def get_caches():
     global _caches
     caches = _caches
-    if caches == None:
+    if caches is None:
         pidCache = dict((u.pid, u) for u in _databaseQuery().all())
         usernameCache = dict((u.username, u) for u in pidCache.values())
         idCache = dict((u.id, u) for u in pidCache.values())
