@@ -24,7 +24,7 @@ def get_caches():
     global _caches
     caches = _caches
     if caches is None:
-        pidCache = dict((u.pid, u) for u in _databaseQuery().all())
+        pidCache = {u.pid: u for u in _databaseQuery().all()}
         usernameCache = dict((u.username, u) for u in pidCache.values())
         idCache = dict((u.id, u) for u in pidCache.values())
         caches = (pidCache, usernameCache, idCache)
